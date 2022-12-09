@@ -11,6 +11,7 @@
     <modules>
         <module>mushan-gateway</module>
         <module>mushan-common</module>
+        <module>mushan-system</module>
     </modules>
     <packaging>pom</packaging>
 
