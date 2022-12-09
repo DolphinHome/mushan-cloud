@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+# Spring
+spring: 
+  application:
+    # 应用名称
+    name: mushan-gateway
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: 124.70.23.222:8848
+      config:
+        # 配置中心地址
+        server-addr: 124.70.23.222:8848
+        # 配置文件格式
+        file-extension: yaml
+        # 共享配置
+        shared-configs[0]:
+          data-id: mushan-gateway.yaml
