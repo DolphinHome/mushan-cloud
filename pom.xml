@@ -8,6 +8,10 @@
     <artifactId>mushan-cloud</artifactId>
     <version>1.0-SNAPSHOT</version>
     <description>木杉cloud</description>
+    <modules>
+        <module>mushan-gateway</module>
+        <module>mushan-common</module>
+    </modules>
     <packaging>pom</packaging>
 
 
