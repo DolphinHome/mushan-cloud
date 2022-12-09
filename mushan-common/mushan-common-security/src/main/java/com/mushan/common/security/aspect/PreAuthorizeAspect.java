@@ -39,6 +39,7 @@ public class PreAuthorizeAspect {
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         // 注解鉴权
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        System.out.println("aaa");
         try {
             // 执行原有逻辑
             Object obj = joinPoint.proceed();
