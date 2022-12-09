@@ -11,5 +11,12 @@
 
     <artifactId>mushan-common-security</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+    </dependencies>
 
 </project>
