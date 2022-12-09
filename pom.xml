@@ -27,6 +27,7 @@
         <pagehelper.version>1.4.1</pagehelper.version>
         <kaptcha.version>1.4.1</kaptcha.version>
         <fastjson.version>1.2.78</fastjson.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencyManagement>
