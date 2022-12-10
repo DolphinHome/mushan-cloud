@@ -17,6 +17,10 @@ spring:
         # 配置文件格式
         file-extension: yaml
         # 共享配置
+
+
+
+
 #端口暴漏
 management:
   endpoints:

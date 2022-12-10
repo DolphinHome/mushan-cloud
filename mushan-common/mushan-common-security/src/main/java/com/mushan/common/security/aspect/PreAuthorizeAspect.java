@@ -1,16 +1,25 @@
 package com.mushan.common.security.aspect;
 
 
+import com.mushan.common.security.annotation.RequiresPermissions;
+import com.mushan.utlis.RequestUtlis;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.context.annotation.Configuration;
+
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 @Aspect
+@Configuration
 public class PreAuthorizeAspect {
+
+
+
     /**
      * 构建
      */
@@ -39,7 +48,7 @@ public class PreAuthorizeAspect {
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         // 注解鉴权
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-        System.out.println("aaa");
+        checkMethodAnnotation(signature.getMethod());
         try {
             // 执行原有逻辑
             Object obj = joinPoint.proceed();
@@ -47,6 +56,38 @@ public class PreAuthorizeAspect {
         } catch (Throwable e) {
             throw e;
         }
+    }
+
+
+    /**
+     * 对一个Method对象进行注解检查
+     */
+    public void checkMethodAnnotation(Method method) {
+
+        RequiresPermissions requiresPermissions = method.getAnnotation(RequiresPermissions.class);
+        if (requiresPermissions != null) {
+            doCheckPermissions(requiresPermissions);
+        }
+    }
+
+
+    //检查权限 如果没有权限 就抛出异常信息
+
+    private void doCheckPermissions(RequiresPermissions requiresPermissions){
+        String value = requiresPermissions.value();  //权限信息
+        if (StringUtils.isEmpty(value)){
+            throw new RuntimeException("权限问题");
+        }else {
+            //获取登录信息
+            HttpServletRequest request = RequestUtlis.getRequest();
+            String s = request.getHeader("aaa");
+            if (s.equals(value)){
+                System.out.println("权限没有问题");
+            }else {
+                throw new RuntimeException("权限问题");
+            }
+        }
+
     }
 
 }

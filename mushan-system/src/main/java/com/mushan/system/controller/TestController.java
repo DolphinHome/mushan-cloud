@@ -20,9 +20,12 @@ public class TestController {
     }
 
     @GetMapping("/t2")
+
     public void t2(){
         testService.t2();
     }
+
+
 
 
 }

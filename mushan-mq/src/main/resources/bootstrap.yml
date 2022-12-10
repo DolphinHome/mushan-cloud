@@ -1,11 +1,11 @@
 server:
-  port: 8080
+  port: 10001
 
 # Spring
-spring: 
+spring:
   application:
     # 应用名称
-    name: mushan-gateway
+    name: mushan-mq
   cloud:
     nacos:
       discovery:
@@ -17,7 +17,13 @@ spring:
         # 配置文件格式
         file-extension: yaml
         # 共享配置
-        shared-configs[0]:
-          data-id: mushan-gateway.yaml
 
 
+
+
+#端口暴漏
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

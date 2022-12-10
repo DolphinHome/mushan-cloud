@@ -1,1 +1,2 @@
 com.mushan.common.security.aspect.PreAuthorizeAspect
+com.mushan.common.security.interceptor.FeignAutoConfiguration

@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Map;
 
-
-@FeignClient(value = "mushan-gateway")
+@Component
+@FeignClient(value = "mushan-mq")
 public interface TestService {
 
 
-    @GetMapping("/test/t2")
+    @GetMapping("/taaa")
     public void t2();
 
 }

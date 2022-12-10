@@ -13,6 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>mushan-common-security</module>
+        <module>mushan-common-log</module>
+        <module>mushan-common-utlis</module>
     </modules>
 
 </project>

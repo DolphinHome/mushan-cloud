@@ -1,18 +1,17 @@
-package com.mushan.gateway.controller;
+package com.mushan.mq.controller;
 
 import com.mushan.common.security.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/test")
-public class Test1Controller {
+public class T1 {
 
-    @GetMapping("/t2")
+
+    @GetMapping("/taaa")
     @RequiresPermissions("aa:bb:vc")
-    public void t2(){
-        System.out.println("aabb");
+    public void t1(){
+        System.out.println("taaa");
     }
 
 }
