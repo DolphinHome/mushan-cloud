@@ -16,6 +16,7 @@
         <module>mushan-common-log</module>
         <module>mushan-common-utlis</module>
         <module>mushan-common-exception</module>
+        <module>mushan-common-exception</module>
     </modules>
 
 </project>
