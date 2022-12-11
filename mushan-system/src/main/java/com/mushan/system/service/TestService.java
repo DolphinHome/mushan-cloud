@@ -15,7 +15,7 @@ import java.util.Map;
 public interface TestService {
 
 
-    @GetMapping("/taaa")
+    @GetMapping("/mq/taaa")
     public void t2();
 
 }
