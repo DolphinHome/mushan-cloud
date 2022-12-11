@@ -1,11 +1,14 @@
 package com.mushan.common.log.aspect;
 
 import com.mushan.common.log.annotation.Log;
+import com.mushan.utlis.RequestUtlis;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Aspect
 public class LogAspect {
@@ -26,6 +29,8 @@ public class LogAspect {
 
 
     protected void handleLog(final JoinPoint joinPoint, Log controllerLog, final Exception e, Object jsonResult){
-        System.out.println("执行了");
+        HttpServletRequest request = RequestUtlis.getRequest();
+        String aaa = request.getHeader("aaa");
+        System.out.println(aaa);
     }
 }

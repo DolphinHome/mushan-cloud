@@ -54,6 +54,7 @@ public class PreAuthorizeAspect {
             Object obj = joinPoint.proceed();
             return obj;
         } catch (Throwable e) {
+
             throw e;
         }
     }

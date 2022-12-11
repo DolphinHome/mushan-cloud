@@ -24,8 +24,7 @@ public class TestController {
     @GetMapping("/t2")
     @Log()
     public void t2(){
-        int a = 1/0;
-        testService.t2();
+        System.out.println(testService.t2());
     }
 
 
