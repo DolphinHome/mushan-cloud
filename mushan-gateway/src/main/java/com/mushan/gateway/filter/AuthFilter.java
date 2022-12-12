@@ -57,13 +57,16 @@ public class AuthFilter implements GlobalFilter, Ordered
         //开始判断是否存在token
         if (StringUtils.isEmpty(token)){
             //返回状态
-            ServerHttpResponse response = exchange.getResponse();
-            response.setStatusCode(HttpStatus.OK);
-            response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-            DataBuffer dataBuffer = response.bufferFactory().wrap(JSON.toJSONString(ResponseUtils.unauthz()).getBytes());
-            return response.writeWith(Mono.just(dataBuffer));
+            return writer(exchange.getResponse());
         }
         return chain.filter(exchange);
+    }
+
+    private Mono<Void> writer(ServerHttpResponse response){
+        response.setStatusCode(HttpStatus.OK);  //状态吗
+        response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);  //返回数据格式
+        DataBuffer dataBuffer = response.bufferFactory().wrap(JSON.toJSONString(ResponseUtils.unauthz()).getBytes());
+        return response.writeWith(Mono.just(dataBuffer));
     }
 
 
