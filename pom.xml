@@ -13,6 +13,7 @@
         <module>mushan-common</module>
         <module>mushan-system</module>
         <module>mushan-mq</module>
+        <module>mushan-generate</module>
     </modules>
     <packaging>pom</packaging>
 
