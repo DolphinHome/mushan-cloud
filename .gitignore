@@ -60,3 +60,5 @@ hs_err_pid*
 /.project
 /.vscode/
 *.iml
+
+**/target
