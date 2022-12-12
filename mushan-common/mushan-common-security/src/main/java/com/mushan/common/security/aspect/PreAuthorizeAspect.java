@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.http.HttpServletRequest;
@@ -77,19 +78,17 @@ public class PreAuthorizeAspect {
 
     private void doCheckPermissions(RequiresPermissions requiresPermissions){
         String value = requiresPermissions.value();  //权限信息
-        if (StringUtils.isEmpty(value)){
-            throw new RuntimeException("权限问题");
+        HttpServletRequest request = RequestUtlis.getRequest();
+        String s = request.getHeader("aaa");
+        if (StringUtils.isEmpty(s)){
+            throw new  AuthException();
         }else {
-            //获取登录信息
-            HttpServletRequest request = RequestUtlis.getRequest();
-            String s = request.getHeader("aaa");
             if (s.equals(value)){
                 System.out.println("权限没有问题");
             }else {
                 throw new  AuthException();
             }
         }
-
     }
 
 }

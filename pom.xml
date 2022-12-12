@@ -24,11 +24,12 @@
         <spring-cloud.version>2021.0.5</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>
         <lang3.version>3.6</lang3.version>
-        <mybatis.version>2.1.1</mybatis.version>
+        <mybatis.version>3.5.2</mybatis.version>
         <jwt.version>0.9.1</jwt.version>
         <pagehelper.version>1.4.1</pagehelper.version>
         <kaptcha.version>1.4.1</kaptcha.version>
         <fastjson.version>1.2.78</fastjson.version>
+        <mysql.version>8.0.31</mysql.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -63,12 +64,19 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- Mybatis 依赖配置 -->
+
             <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.baomidou</groupId>
+                        <artifactId>mybatis-plus-generator</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
+
 
 
             <dependency>
@@ -80,7 +88,7 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <scope>runtime</scope>
+                <version>${mysql.version}</version>
             </dependency>
 
 
