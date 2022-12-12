@@ -1,2 +1,3 @@
 com.mushan.common.security.aspect.PreAuthorizeAspect
 com.mushan.common.security.interceptor.FeignAutoConfiguration
+com.mushan.common.security.handler.GlobalExceptionHandler

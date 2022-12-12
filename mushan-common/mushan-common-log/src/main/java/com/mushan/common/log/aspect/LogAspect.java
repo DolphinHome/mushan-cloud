@@ -31,6 +31,6 @@ public class LogAspect {
     protected void handleLog(final JoinPoint joinPoint, Log controllerLog, final Exception e, Object jsonResult){
         HttpServletRequest request = RequestUtlis.getRequest();
         String aaa = request.getHeader("aaa");
-        System.out.println(aaa);
+
     }
 }
