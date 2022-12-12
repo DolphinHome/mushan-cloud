@@ -16,6 +16,6 @@ public interface TestService {
 
 
     @GetMapping("/mq/taaa")
-    public String t2();
+    public Object t2();
 
 }

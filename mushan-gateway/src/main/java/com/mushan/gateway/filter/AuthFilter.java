@@ -1,6 +1,12 @@
 package com.mushan.gateway.filter;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.nacos.common.model.RestResult;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mushan.exception.AuthException;
+import com.mushan.utlis.ResponseUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
+import org.springframework.core.io.buffer.DataBuffer;
+import org.springframework.core.io.buffer.DataBufferFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
@@ -18,8 +30,7 @@ import java.util.Arrays;
 
 /**
  * 网关鉴权
- * 
- * @author ruoyi
+ *
  */
 @Component
 public class AuthFilter implements GlobalFilter, Ordered
@@ -45,9 +56,13 @@ public class AuthFilter implements GlobalFilter, Ordered
         String token = request.getHeaders().getFirst("token");
         //开始判断是否存在token
         if (StringUtils.isEmpty(token)){
-            throw new RuntimeException("权限不足，重新登录");
+            //返回状态
+            ServerHttpResponse response = exchange.getResponse();
+            response.setStatusCode(HttpStatus.OK);
+            response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+            DataBuffer dataBuffer = response.bufferFactory().wrap(JSON.toJSONString(ResponseUtils.unauthz()).getBytes());
+            return response.writeWith(Mono.just(dataBuffer));
         }
-
         return chain.filter(exchange);
     }
 

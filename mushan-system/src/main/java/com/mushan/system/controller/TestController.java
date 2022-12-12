@@ -23,8 +23,8 @@ public class TestController {
 
     @GetMapping("/t2")
     @Log()
-    public void t2(){
-        System.out.println(testService.t2());
+    public Object t2(){
+       return testService.t2();
     }
 
 

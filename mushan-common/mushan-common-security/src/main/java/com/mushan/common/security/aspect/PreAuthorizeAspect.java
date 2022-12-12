@@ -2,6 +2,7 @@ package com.mushan.common.security.aspect;
 
 
 import com.mushan.common.security.annotation.RequiresPermissions;
+import com.mushan.exception.AuthException;
 import com.mushan.utlis.RequestUtlis;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -85,7 +86,7 @@ public class PreAuthorizeAspect {
             if (s.equals(value)){
                 System.out.println("权限没有问题");
             }else {
-                throw new RuntimeException("权限问题");
+                throw new  AuthException();
             }
         }
 
