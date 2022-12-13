@@ -69,9 +69,8 @@ public class velocityUtil {
             //判断是否是主键
             if (map.containsKey("columnKey") & "PRI".equals(map.get("columnKey").toString()) & genTable.getPk() == null){
                 genTable.setPk(column);
-            }else {
-                columsList.add(column);
             }
+            columsList.add(column);
         }
         genTable.setColumns(columsList);
 

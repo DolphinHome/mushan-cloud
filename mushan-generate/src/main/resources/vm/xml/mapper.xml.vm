@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="${ClassName}Dao ${className}Dao">
+<mapper namespace="${package}.dao.${ClassName}Dao">
     
     <resultMap type="${package}.pojo.${ClassName}" id="${ClassName}Result">
 #foreach ($column in $columns)
-        <result property="${column.attrType}"    column="${column.columnName}"    />
+        <result property="${column.attrName}"    column="${column.columnName}"    />
 #end
     </resultMap>
 
@@ -17,9 +17,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="list" parameterType="${package}.pojo.${ClassName}" resultMap="${ClassName}Result">
         <include refid="select${ClassName}Vo"/>
-        <where>
-        ${pkColumn.columnName} = #{${pkColumn.columnName}}
-        </where>
     </select>
 
 
@@ -31,14 +28,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         insert into ${tableName}
         <trim prefix="(" suffix=")" suffixOverrides=",">
 #foreach($column in $columns)
-#if($column.columnName != $pkColumn.columnName || !$pkColumn.increment)
+#if($column.columnName != $pkColumn.columnName)
             <if test="$column.attrName != null#if($column.attrType == 'String') and $column.attrName != ''#end">$column.columnName,</if>
 #end
 #end
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
 #foreach($column in $columns)
-#if($column.columnName != $pkColumn.columnName || !$pkColumn.increment)
+#if($column.columnName != $pkColumn.columnName)
             <if test="$column.attrName != null#if($column.attrType == 'String' ) and $column.attrName != ''#end">#{$column.attrName},</if>
 #end
 #end
