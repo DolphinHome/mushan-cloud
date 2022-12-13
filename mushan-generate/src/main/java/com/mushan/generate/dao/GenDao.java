@@ -10,5 +10,7 @@ import java.util.Map;
 
 public interface GenDao {
 
-    List<Map> list();
+    List<Map> list(String name);
+
+    List<Map> queryColumnByTableName(String name);
 }

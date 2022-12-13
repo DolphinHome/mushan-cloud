@@ -3,7 +3,7 @@ package com.mushan.common.security.handler;
 
 
 import com.mushan.exception.AuthException;
-import com.mushan.utlis.ResponseUtils;
+import com.mushan.utlis.R;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -27,13 +27,15 @@ public class GlobalExceptionHandler
     @ExceptionHandler(value = AuthException.class)
     public Object handleNotPermissionException(Exception e, HttpServletRequest request)
     {
-        return ResponseUtils.unauthz();
+        e.printStackTrace();
+        return R.unauthz();
     }
 
     @ExceptionHandler(value = Exception.class)
     public Object e(Exception e, HttpServletRequest request)
     {
-        return ResponseUtils.fail(-1,e.getMessage());
+        e.printStackTrace();
+        return R.fail(-1,e.getMessage());
     }
 
 }

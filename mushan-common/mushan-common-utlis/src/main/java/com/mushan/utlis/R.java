@@ -1,9 +1,12 @@
 package com.mushan.utlis;
 
+import com.github.pagehelper.PageInfo;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class ResponseUtils {
+public class R {
 
 
     public static Object ok() {
@@ -63,6 +66,15 @@ public class ResponseUtils {
     }
     public static Object unauthz() {
         return fail(506, "无操作权限");
+    }
+
+    public static Object table(List<?> data){
+        Map<String, Object> obj = new HashMap<String, Object>();
+        obj.put("errno", 0);
+        obj.put("errmsg", "成功");
+        obj.put("data", data);
+        obj.put("total", PageInfo.of(data).getTotal());
+        return obj;
     }
 
 }

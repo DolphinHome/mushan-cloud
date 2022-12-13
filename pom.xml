@@ -31,6 +31,8 @@
         <fastjson.version>1.2.78</fastjson.version>
         <mysql.version>8.0.31</mysql.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <lombok.version>1.16.18</lombok.version>
+        <velocity.version>2.2</velocity.version>
     </properties>
 
     <dependencyManagement>
@@ -127,11 +129,27 @@
                 <artifactId>spring-boot-starter-data-redis</artifactId>
             </dependency>
 
+
+            <!-- velocity代码生成使用模板 -->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity.version}</version>
+            </dependency>
+
             <!-- 阿里JSON解析器 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <optional>true</optional>
             </dependency>
 
         </dependencies>
