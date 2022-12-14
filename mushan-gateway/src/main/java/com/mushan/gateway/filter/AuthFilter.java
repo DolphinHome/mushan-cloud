@@ -7,7 +7,7 @@ import com.alibaba.nacos.common.model.RestResult;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mushan.exception.AuthException;
-import com.mushan.utlis.ResponseUtils;
+import com.mushan.utlis.R;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,8 +38,8 @@ public class AuthFilter implements GlobalFilter, Ordered
 {
 
     private static final String[] URL_WHITELIST = {
-            "/system/t2",
-            "/user/login"
+            "/login/captchaImage",
+
     };
 
     @Override
@@ -66,7 +66,7 @@ public class AuthFilter implements GlobalFilter, Ordered
     private Mono<Void> writer(ServerHttpResponse response){
         response.setStatusCode(HttpStatus.OK);  //状态吗
         response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);  //返回数据格式
-        DataBuffer dataBuffer = response.bufferFactory().wrap(JSON.toJSONString(ResponseUtils.unauthz()).getBytes());
+        DataBuffer dataBuffer = response.bufferFactory().wrap(JSON.toJSONString(R.unauthz()).getBytes());
         return response.writeWith(Mono.just(dataBuffer));
     }
 

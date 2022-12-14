@@ -1,0 +1,24 @@
+server:
+  port: 6001
+  servlet:
+    context-path: /login
+# Spring
+spring:
+  application:
+    # 应用名称
+    name: mushan-login
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: 127.0.0.1:8848
+      config:
+        # 配置中心地址
+        server-addr: 127.0.0.1:8848
+        # 配置文件格式
+        file-extension: yaml
+        # 共享配置
+        shared-configs[0]:
+          data-id: mushan-redis.yaml
+          refresh: true
+
