@@ -77,7 +77,7 @@ public class ${ClassName}Controller
     /**
      * 删除
      */
-    @RequiresPermissions("hasAnyAuthority('${moduleName}:${className}:remove')")
+    @RequiresPermissions("${moduleName}:${className}:remove")
 	@DeleteMapping("/{id}")
     @Log()
     public Object delete(@PathVariable("id") ${pkColumn.attrType} id)
