@@ -1,9 +1,8 @@
-package com.mushan.login.controller;
+package com.mushan.system.controller;
 
 import com.google.code.kaptcha.Producer;
 import com.mushan.utlis.Base64;
 import com.mushan.utlis.R;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.FastByteArrayOutputStream;

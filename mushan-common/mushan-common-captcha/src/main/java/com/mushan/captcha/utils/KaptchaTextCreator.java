@@ -1,4 +1,4 @@
-package com.mushan.login.utils;
+package com.mushan.captcha.utils;
 import com.google.code.kaptcha.text.impl.DefaultTextCreator;
 
 import java.util.Random;

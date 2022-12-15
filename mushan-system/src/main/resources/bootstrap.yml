@@ -19,9 +19,12 @@ spring:
         file-extension: yaml
         # 共享配置
         shared-configs[0]:
-          data-id: mushan-mysql-generate.yaml
+          data-id: mushan-mysql-system.yaml
           refresh: true
         shared-configs[1]:
           data-id: mushan-mybatis.yaml
+          refresh: true
+        shared-configs[2]:
+          data-id: mushan-redis.yaml
           refresh: true
 
