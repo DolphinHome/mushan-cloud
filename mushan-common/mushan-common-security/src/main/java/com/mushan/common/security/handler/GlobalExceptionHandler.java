@@ -3,6 +3,8 @@ package com.mushan.common.security.handler;
 
 
 import com.mushan.exception.AuthException;
+import com.mushan.exception.CodeException;
+import com.mushan.exception.UserNamePassWordException;
 import com.mushan.utlis.R;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
@@ -31,11 +33,28 @@ public class GlobalExceptionHandler
         return R.unauthz();
     }
 
+    @ExceptionHandler(value = UserNamePassWordException.class)
+    public Object UserNamePassWordException(Exception e, HttpServletRequest request)
+    {
+        e.printStackTrace();
+        return R.username();
+    }
+
+
     @ExceptionHandler(value = Exception.class)
     public Object e(Exception e, HttpServletRequest request)
     {
         e.printStackTrace();
         return R.fail(-1,e.getMessage());
     }
+
+
+    @ExceptionHandler(value = CodeException.class)
+    public Object CodeException(Exception e, HttpServletRequest request)
+    {
+        e.printStackTrace();
+        return R.captcha();
+    }
+
 
 }

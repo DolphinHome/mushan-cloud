@@ -43,7 +43,6 @@ public class JwtUtils {
     private static String generatorToken(Map<String,Object> map) {
         return Jwts.builder()
                 .setClaims(map)
-                .setExpiration(generatorExpiration())
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }

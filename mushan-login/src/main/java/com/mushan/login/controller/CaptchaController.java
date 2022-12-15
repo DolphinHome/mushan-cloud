@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 public class CaptchaController {
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String,Object> redisTemplate;
     @Autowired
     private Producer captchaProducerMath;
 
