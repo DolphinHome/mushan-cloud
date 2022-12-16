@@ -1,13 +1,12 @@
 package com.mushan.system.controller;
 
+import com.mushan.common.security.utils.GetLoginUser;
 import com.mushan.system.service.LoginService;
+import com.mushan.utlis.LoginUser;
 import com.mushan.utlis.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -26,6 +25,13 @@ public class LoginController {
             return R.badArgument();
         }
         return R.ok(loginService.login(map));
+    }
+
+
+    @GetMapping
+    public Object getlogin(){
+        LoginUser user = GetLoginUser.getUser();
+        return R.ok(user);
     }
 
 }

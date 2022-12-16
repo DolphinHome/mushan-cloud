@@ -2,6 +2,7 @@ package com.mushan.common.security.aspect;
 
 
 import com.mushan.common.security.annotation.RequiresPermissions;
+import com.mushan.common.security.utils.GetLoginUser;
 import com.mushan.exception.AuthException;
 import com.mushan.exception.TokenTimeOutException;
 import com.mushan.utlis.JwtUtils;
@@ -24,8 +25,7 @@ import java.lang.reflect.Method;
 @Configuration
 public class PreAuthorizeAspect {
 
-    @Autowired
-    private RedisTemplate<String,Object> redisTemplate;
+
 
     /**
      * 构建
@@ -83,22 +83,9 @@ public class PreAuthorizeAspect {
 
     private void doCheckPermissions(RequiresPermissions requiresPermissions){
         String value = requiresPermissions.value();  //权限信息
-        HttpServletRequest request = RequestUtlis.getRequest();
-        String token = request.getHeader("mushan-token");   // 获取token
-        if (StringUtils.isEmpty(token)){
-            throw new  AuthException();
-        }else {
-            //解析token
-            String uuid = JwtUtils.getUserNameFormToken(token);
-            if (redisTemplate.hasKey("user" + uuid)){
-                LoginUser loginUser = (LoginUser) redisTemplate.opsForValue().get("user" + uuid);
-                if (!loginUser.getAuthorities().contains(value)){
-                    throw new  AuthException();
-                }
-            }else {
-                throw new TokenTimeOutException();
-            }
-
+        LoginUser user = GetLoginUser.getUser();
+        if (!user.getAuthorities().contains(value)){
+            throw new AuthException();
         }
     }
 
