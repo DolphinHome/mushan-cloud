@@ -84,5 +84,6 @@ public class SysUser
     private String remark;
 
 
+    private Long  role;
 
 }

@@ -1,5 +1,7 @@
 package com.mushan.generate.controller;
 
+import com.mushan.common.log.annotation.Log;
+import com.mushan.common.security.annotation.RequiresPermissions;
 import com.mushan.generate.service.GenService;
 import com.mushan.utlis.PageUtils;
 import com.mushan.utlis.R;
@@ -19,6 +21,8 @@ public class GenController {
 
 
     @GetMapping("/list")
+    @Log()
+    @RequiresPermissions("generate:list")
     public Object list(String name){
         PageUtils.start();
         return R.table(genService.list(name));
@@ -26,6 +30,8 @@ public class GenController {
 
 
     @RequestMapping("/code")
+    @Log()
+    @RequiresPermissions("generate:code")
     public void  code(String tables, HttpServletResponse response) throws IOException {
         byte[] data = genService.code(tables);
         response.reset();

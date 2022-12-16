@@ -24,3 +24,6 @@ spring:
         shared-configs[1]:
           data-id: mushan-mybatis.yaml
           refresh: true
+        shared-configs[2]:
+          data-id: mushan-redis.yaml
+          refresh: true

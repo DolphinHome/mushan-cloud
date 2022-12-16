@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectSysUserVo"/> where id = #{id}
     </select>
         
-    <insert id="add" parameterType="com.mushan.system.pojo.SysUser">
+    <insert id="add" parameterType="com.mushan.system.pojo.SysUser"  useGeneratedKeys="true" keyProperty="id">
         insert into sys_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="deptId != null">dept_id,</if>
@@ -132,5 +132,7 @@ ON
 sm.id = srm.menu_id
 WHERE user.id = #{uid} AND parent_id != 0  AND sm.perms is not NULL
     </select>
+
+
 
 </mapper>

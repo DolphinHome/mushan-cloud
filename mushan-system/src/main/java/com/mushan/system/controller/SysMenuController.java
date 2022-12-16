@@ -14,29 +14,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.mushan.system.service.SysUserService;
-import com.mushan.system.pojo.SysUser;
+import com.mushan.system.service.SysMenuService;
+import com.mushan.system.pojo.SysMenu;
 import java.util.List;
 
 @RestController
-    @RequestMapping("/sysUser")
-public class SysUserController
+@RequestMapping("/sysMenu")
+public class SysMenuController
 {
     @Autowired
-    private SysUserService sysUserService;
+    private SysMenuService sysMenuService;
 
     /**
     * 查询列表
 * @return
 */
-    @RequiresPermissions("system:sysUser:list")
-        @GetMapping("/list")
+    @RequiresPermissions("system:sysMenu:list")
+    @GetMapping("/list")
     @Log()
-    public Object list(SysUser sysUser)
+    public Object list(SysMenu sysMenu)
     {
-        PageUtils.start();
-        List<SysUser> list = sysUserService.List(sysUser);
-        return R.table(list);
+
+        List<SysMenu> list = sysMenuService.List(sysMenu);
+        return R.ok(list);
     }
 
 
@@ -44,48 +44,54 @@ public class SysUserController
     * 通过id 查询
 * @return
 */
-    @RequiresPermissions("system:sysUser:query")
+    @RequiresPermissions("system:sysMenu:query")
     @GetMapping(value = "/{id}")
     @Log()
     public Object query(@PathVariable("id") Long id)
     {
-        return R.ok(sysUserService.query(id));
+        return R.ok(sysMenuService.query(id));
     }
 
     /**
      * 新增
      */
-    @RequiresPermissions("system:sysUser:add")
+    @RequiresPermissions("system:sysMenu:add")
     @PostMapping
     @Log()
-    public Object add(@RequestBody SysUser sysUser)
+    public Object add(@RequestBody SysMenu sysMenu)
     {
-        return R.ok(sysUserService.add(sysUser));
+        return R.ok(sysMenuService.add(sysMenu));
     }
 
     /**
      * 修改
      */
-    @RequiresPermissions("system:sysUser:edit")
+    @RequiresPermissions("system:sysMenu:edit")
     @PutMapping
     @Log()
-    public Object edit(@RequestBody SysUser sysUser)
+    public Object edit(@RequestBody SysMenu sysMenu)
     {
-        return R.ok(sysUserService.edit(sysUser));
+        return R.ok(sysMenuService.edit(sysMenu));
     }
 
     /**
      * 删除
      */
-    @RequiresPermissions("system:sysUser:remove")
+    @RequiresPermissions("system:sysMenu:remove")
 	@DeleteMapping("/{id}")
     @Log()
     public Object delete(@PathVariable("id") Long id)
     {
-        return R.ok(sysUserService.delete(id));
+        return R.ok(sysMenuService.delete(id));
     }
 
-
-
+    /**
+     * 通过用户id 查询路由信息
+     */
+    @GetMapping("/getRouters")
+    @Log()
+    public Object getRouters(){
+        return R.ok(sysMenuService.getRouters());
+    }
 
 }

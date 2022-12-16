@@ -5,7 +5,7 @@
 <mapper namespace="com.mushan.generate.dao.GenDao">
 
 	<select id="list" resultType="map">
-		select table_name tableName, engine, table_comment tableComment, create_time createTime from information_schema.tables
+		select table_name tableName, engine, table_comment tableComment, DATE_FORMAT(create_time,'%Y-%m-%d %H:%i:%S') createTime from information_schema.tables
 		where table_schema = (select database())
 		order by create_time desc
 	</select>
