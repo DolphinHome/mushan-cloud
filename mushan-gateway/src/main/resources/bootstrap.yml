@@ -1,7 +1,9 @@
 server:
   port: 8080
 # Spring
-spring: 
+spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     # 应用名称
     name: mushan-gateway

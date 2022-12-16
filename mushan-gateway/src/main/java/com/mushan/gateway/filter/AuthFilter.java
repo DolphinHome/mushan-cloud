@@ -38,7 +38,8 @@ public class AuthFilter implements GlobalFilter, Ordered
 {
 
     private static final String[] URL_WHITELIST = {
-            "/login/captchaImage",
+            "/system/captchaImage",
+            "/system/login"
 
     };
 
@@ -54,7 +55,7 @@ public class AuthFilter implements GlobalFilter, Ordered
         {
             return chain.filter(exchange);
         }
-        String token = request.getHeaders().getFirst("token");
+        String token = request.getHeaders().getFirst("mushan-token");
         //开始判断是否存在token
         if (StringUtils.isEmpty(token)){
             //返回状态

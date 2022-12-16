@@ -2,6 +2,7 @@ package com.mushan.system.dao;
 
 import java.util.List;
 import com.mushan.system.pojo.SysUser;
+import com.mushan.utlis.LoginUser;
 
 
 public interface SysUserDao
@@ -18,4 +19,7 @@ public interface SysUserDao
 
     public int delete(Long id);
 
+    LoginUser loadUserByUsername(String name);
+
+    List<String> getPower(Long id);
 }

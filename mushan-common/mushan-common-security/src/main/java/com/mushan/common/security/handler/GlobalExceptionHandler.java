@@ -4,6 +4,7 @@ package com.mushan.common.security.handler;
 
 import com.mushan.exception.AuthException;
 import com.mushan.exception.CodeException;
+import com.mushan.exception.TokenTimeOutException;
 import com.mushan.exception.UserNamePassWordException;
 import com.mushan.utlis.R;
 import org.springframework.http.HttpStatus;
@@ -40,6 +41,12 @@ public class GlobalExceptionHandler
         return R.username();
     }
 
+    @ExceptionHandler(value = TokenTimeOutException.class)
+    public Object timeException(Exception e, HttpServletRequest request)
+    {   //token 过期
+        e.printStackTrace();
+        return R.unlogin();
+    }
 
     @ExceptionHandler(value = Exception.class)
     public Object e(Exception e, HttpServletRequest request)

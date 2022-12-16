@@ -49,6 +49,12 @@
             <artifactId>fastjson</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.mushan</groupId>
+            <artifactId>mushan-common-redis</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 

@@ -113,5 +113,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         delete from sys_user where id = #{id}
     </delete>
 
+    <select id="loadUserByUsername" resultType="com.mushan.utlis.LoginUser">
+        SELECT id,user_name as `username`,`password` FROM sys_user WHERE user_name = #{name}
+    </select>
+
+    <select id="getPower" resultType="string" parameterType="long">
+        SELECT DISTINCT sm.perms FROM sys_user as user JOIN sys_user_role as sur
+ON
+user.id = sur.user_id
+JOIN sys_role as sr
+ON
+sr.id = sur.role_id
+JOIN sys_role_menu as srm
+ON
+sr.id = srm.role_id
+JOIN sys_menu as sm
+ON
+sm.id = srm.menu_id
+WHERE user.id = #{uid} AND parent_id != 0  AND sm.perms is not NULL
+    </select>
 
 </mapper>

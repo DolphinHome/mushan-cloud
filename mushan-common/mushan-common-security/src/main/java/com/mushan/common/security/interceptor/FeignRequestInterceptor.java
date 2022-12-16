@@ -22,8 +22,8 @@ public class FeignRequestInterceptor implements RequestInterceptor
     {
         HttpServletRequest request = RequestUtlis.getRequest();
         if (request != null){
-            String aaa = request.getHeader("aaa");
-            requestTemplate.header("aaa",aaa);
+            String token = request.getHeader("mushan-token");
+            requestTemplate.header("mushan-token",token);
         }
     }
 }

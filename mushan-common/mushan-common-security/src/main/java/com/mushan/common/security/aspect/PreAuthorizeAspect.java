@@ -3,6 +3,9 @@ package com.mushan.common.security.aspect;
 
 import com.mushan.common.security.annotation.RequiresPermissions;
 import com.mushan.exception.AuthException;
+import com.mushan.exception.TokenTimeOutException;
+import com.mushan.utlis.JwtUtils;
+import com.mushan.utlis.LoginUser;
 import com.mushan.utlis.RequestUtlis;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -12,6 +15,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.RedisTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
@@ -20,7 +24,8 @@ import java.lang.reflect.Method;
 @Configuration
 public class PreAuthorizeAspect {
 
-
+    @Autowired
+    private RedisTemplate<String,Object> redisTemplate;
 
     /**
      * 构建
@@ -79,15 +84,21 @@ public class PreAuthorizeAspect {
     private void doCheckPermissions(RequiresPermissions requiresPermissions){
         String value = requiresPermissions.value();  //权限信息
         HttpServletRequest request = RequestUtlis.getRequest();
-        String s = request.getHeader("aaa");
-        if (StringUtils.isEmpty(s)){
+        String token = request.getHeader("mushan-token");   // 获取token
+        if (StringUtils.isEmpty(token)){
             throw new  AuthException();
         }else {
-            if (s.equals(value)){
-                System.out.println("权限没有问题");
+            //解析token
+            String uuid = JwtUtils.getUserNameFormToken(token);
+            if (redisTemplate.hasKey("user" + uuid)){
+                LoginUser loginUser = (LoginUser) redisTemplate.opsForValue().get("user" + uuid);
+                if (!loginUser.getAuthorities().contains(value)){
+                    throw new  AuthException();
+                }
             }else {
-                throw new  AuthException();
+                throw new TokenTimeOutException();
             }
+
         }
     }
 

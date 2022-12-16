@@ -19,7 +19,7 @@ import com.mushan.system.pojo.SysUser;
 import java.util.List;
 
 @RestController
-@RequestMapping("/sysUser")
+    @RequestMapping("/sysUser")
 public class SysUserController
 {
     @Autowired
@@ -30,7 +30,7 @@ public class SysUserController
 * @return
 */
     @RequiresPermissions("system:sysUser:list")
-    @GetMapping("/list")
+        @GetMapping("/list")
     @Log()
     public Object list(SysUser sysUser)
     {
