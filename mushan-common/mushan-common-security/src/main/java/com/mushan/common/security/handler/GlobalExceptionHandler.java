@@ -28,6 +28,7 @@ public class GlobalExceptionHandler
 {
 
     @ExceptionHandler(value = AuthException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Object handleNotPermissionException(Exception e, HttpServletRequest request)
     {
         e.printStackTrace();
@@ -35,6 +36,7 @@ public class GlobalExceptionHandler
     }
 
     @ExceptionHandler(value = UserNamePassWordException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Object UserNamePassWordException(Exception e, HttpServletRequest request)
     {
         e.printStackTrace();
@@ -42,6 +44,7 @@ public class GlobalExceptionHandler
     }
 
     @ExceptionHandler(value = TokenTimeOutException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Object timeException(Exception e, HttpServletRequest request)
     {   //token 过期
         e.printStackTrace();
@@ -49,6 +52,7 @@ public class GlobalExceptionHandler
     }
 
     @ExceptionHandler(value = Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Object e(Exception e, HttpServletRequest request)
     {
         e.printStackTrace();
@@ -57,6 +61,7 @@ public class GlobalExceptionHandler
 
 
     @ExceptionHandler(value = CodeException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Object CodeException(Exception e, HttpServletRequest request)
     {
         e.printStackTrace();
