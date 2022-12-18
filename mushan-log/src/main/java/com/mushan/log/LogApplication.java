@@ -1,16 +1,19 @@
-package com.mushan.mq;
+package com.mushan.log;
 
-
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+@SpringBootApplication
 @EnableDiscoveryClient
-public class MqApplication {
+@MapperScan("com.mushan.log.dao")
+public class LogApplication {
+
     public static void main(String[] args)
     {
-        SpringApplication.run(MqApplication.class, args);
+        SpringApplication.run(LogApplication.class, args);
     }
+
+
 }

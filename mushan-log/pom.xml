@@ -9,24 +9,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mushan-mq</artifactId>
-
+    <artifactId>mushan-log</artifactId>
 
     <dependencies>
+
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-
 
 
         <!-- SpringCloud Alibaba Nacos -->
@@ -50,16 +42,48 @@
             <artifactId>mushan-common-security</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
         <dependency>
             <groupId>com.mushan</groupId>
             <artifactId>mushan-common-log</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <!-- Mybatis 依赖配置 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
 
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.mushan</groupId>
+            <artifactId>mushan-common-redis</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.mushan</groupId>
+            <artifactId>mushan-common-captcha</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.mushan</groupId>
+            <artifactId>mushan-common-utlis</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
 
     </dependencies>
-
-
 </project>

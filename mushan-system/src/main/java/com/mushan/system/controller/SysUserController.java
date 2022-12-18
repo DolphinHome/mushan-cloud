@@ -5,7 +5,9 @@ import com.mushan.utlis.PageUtils;
 import com.mushan.common.log.annotation.Log;
 import com.mushan.common.security.annotation.RequiresPermissions;
 import com.mushan.utlis.R;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -84,6 +86,7 @@ public class SysUserController
     {
         return R.ok(sysUserService.delete(id));
     }
+
 
 
 

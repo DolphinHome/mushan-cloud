@@ -1,4 +1,4 @@
-package com.mushan.system.controller;
+package com.mushan.log.controller;
 
 
 import com.mushan.utlis.PageUtils;
@@ -14,28 +14,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.mushan.system.service.SysRoleService;
-import com.mushan.system.pojo.SysRole;
+import com.mushan.log.service.MushanLogService;
+import com.mushan.log.pojo.MushanLog;
 import java.util.List;
 
 @RestController
-@RequestMapping("/sysRole")
-public class SysRoleController
+@RequestMapping("/mushanLog")
+public class MushanLogController
 {
     @Autowired
-    private SysRoleService sysRoleService;
+    private MushanLogService mushanLogService;
 
     /**
     * 查询列表
 * @return
 */
-    @RequiresPermissions("system:sysRole:list")
+    @RequiresPermissions("log:mushanLog:list")
     @GetMapping("/list")
     @Log()
-    public Object list(SysRole sysRole)
+    public Object list(MushanLog mushanLog)
     {
         PageUtils.start();
-        List<SysRole> list = sysRoleService.List(sysRole);
+        List<MushanLog> list = mushanLogService.List(mushanLog);
         return R.table(list);
     }
 
@@ -44,56 +44,43 @@ public class SysRoleController
     * 通过id 查询
 * @return
 */
-    @RequiresPermissions("system:sysRole:query")
+    @RequiresPermissions("log:mushanLog:query")
     @GetMapping(value = "/{id}")
     @Log()
     public Object query(@PathVariable("id") Long id)
     {
-        return R.ok(sysRoleService.query(id));
+        return R.ok(mushanLogService.query(id));
     }
 
     /**
      * 新增
      */
-    @RequiresPermissions("system:sysRole:add")
+
     @PostMapping
-    @Log()
-    public Object add(@RequestBody SysRole sysRole)
+    public Object add(@RequestBody MushanLog mushanLog)
     {
-        return R.ok(sysRoleService.add(sysRole));
+        return R.ok(mushanLogService.add(mushanLog));
     }
 
     /**
      * 修改
      */
-    @RequiresPermissions("system:sysRole:edit")
+    @RequiresPermissions("log:mushanLog:edit")
     @PutMapping
     @Log()
-    public Object edit(@RequestBody SysRole sysRole)
+    public Object edit(@RequestBody MushanLog mushanLog)
     {
-        return R.ok(sysRoleService.edit(sysRole));
+        return R.ok(mushanLogService.edit(mushanLog));
     }
 
     /**
      * 删除
      */
-    @RequiresPermissions("system:sysRole:remove")
+    @RequiresPermissions("log:mushanLog:remove")
 	@DeleteMapping("/{id}")
     @Log()
     public Object delete(@PathVariable("id") Long id)
     {
-        return R.ok(sysRoleService.delete(id));
+        return R.ok(mushanLogService.delete(id));
     }
-
-
-    @GetMapping("/roles")
-    @Log()
-    public Object roles(){
-        return R.ok(sysRoleService.roles());
-    }
-
-
-
-
-
 }

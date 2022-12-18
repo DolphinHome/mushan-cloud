@@ -15,11 +15,11 @@
         <module>mushan-common-security</module>
         <module>mushan-common-log</module>
         <module>mushan-common-utlis</module>
-        <module>mushan-common-exception</module>
-        <module>mushan-common-exception</module>
         <module>mushan-common-redis</module>
         <module>mushan-common-captcha</module>
         <module>mushan-common-captcha</module>
+        <module>mushan-common-seata</module>
+
     </modules>
 
 </project>

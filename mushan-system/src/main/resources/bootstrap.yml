@@ -27,4 +27,7 @@ spring:
         shared-configs[2]:
           data-id: mushan-redis.yaml
           refresh: true
+#        shared-configs[3]:
+#          data-id: mushan-seata.yaml
+#          refresh: true
 

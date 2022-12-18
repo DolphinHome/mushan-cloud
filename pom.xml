@@ -12,9 +12,9 @@
         <module>mushan-gateway</module>
         <module>mushan-common</module>
         <module>mushan-system</module>
-        <module>mushan-mq</module>
         <module>mushan-generate</module>
-        <module>mushan-login</module>
+        <module>mushan-log</module>
+
     </modules>
     <packaging>pom</packaging>
 
