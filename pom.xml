@@ -13,9 +13,6 @@
         <module>mushan-common</module>
         <module>mushan-system</module>
         <module>mushan-generate</module>
-        <module>mushan-log</module>
-        <module>mushan-api</module>
-
     </modules>
     <packaging>pom</packaging>
 
