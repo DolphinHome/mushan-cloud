@@ -32,7 +32,7 @@ out
 gen
 
 **/.idea
-
+**/node_modules
 ### Java template
 # Compiled class file
 

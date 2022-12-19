@@ -30,7 +30,7 @@ spring:
         shared-configs[3]:
           data-id:  mushan-sentinel.yaml
           refresh: true
+        shared-configs[4]:
+          data-id: mushan-seata.yaml
+          refresh: true
 
-#        shared-configs[3]:
-#          data-id: mushan-seata.yaml
-#          refresh: true

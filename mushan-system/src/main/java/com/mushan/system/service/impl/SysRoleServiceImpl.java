@@ -79,4 +79,12 @@ public class SysRoleServiceImpl implements SysRoleService
         return sysRoleDao.roles();
     }
 
+    @Override
+    public void t1() {
+        SysRole sysRole = new SysRole();
+        sysRole.setRoleName("aabbb");
+        sysRoleDao.add(sysRole);
+        int a = 1/0;
+    }
+
 }

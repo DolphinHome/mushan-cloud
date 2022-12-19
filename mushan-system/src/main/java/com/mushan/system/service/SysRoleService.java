@@ -21,4 +21,6 @@ public interface SysRoleService
     public int delete(Long id);
 
     List<Map<String,Object>> roles();
+
+    void t1();
 }

@@ -126,6 +126,10 @@ public class SysMenuServiceImpl implements SysMenuService
         return maps;
     }
 
+
+
+
+
     private  List<Menu> menus(List<SysMenu> list) {
         //获取menus
         List<Menu> menus =  getmenus(list);
