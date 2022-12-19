@@ -1,37 +1,25 @@
 # mushan-cloud
 
 #### 介绍
-通用的通用管理系统！
-
+通用的通用管理系统！前端使用vue3  后端使用springcloud
 #### 软件架构
 软件架构说明
 
 
-#### 安装教程
+## 系统模块
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+~~~
+com.mushan     
+├── mushan-gateway         // 网关模块 [8080]
+├── mushan-common          // 通用模块
+│       └── mushan-common-captcha                    // 验证码配置
+│       └── rmushan-common-log                          // 日志记录
+│       └── mushan-common-redis                        // 缓存服务
+│       └── mushan-common-security                     // 权限
+│       └── ruoyi-common-utlis                      // 工具
+├── mushan-system         // 系统   9001
+├── mushan-generate          // 代码生成   7001
+├──pom.xml                // 公共依赖
+~~~
 
-#### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-2
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
