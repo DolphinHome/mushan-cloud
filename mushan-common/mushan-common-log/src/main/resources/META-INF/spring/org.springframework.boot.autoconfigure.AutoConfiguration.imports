@@ -1,1 +1,2 @@
 com.mushan.common.log.aspect.LogAspect
+com.mushan.common.log.config.ElasticSearchConfig

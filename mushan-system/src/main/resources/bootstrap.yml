@@ -31,3 +31,6 @@ spring:
 #          data-id: mushan-seata.yaml
 #          refresh: true
 
+feign:
+  hystrix:
+    enabled: true
