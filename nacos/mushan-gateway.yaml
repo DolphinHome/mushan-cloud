@@ -1,0 +1,13 @@
+
+spring:
+    cloud: 
+      gateway:
+        routes:
+        - id: router-system
+          uri: lb://mushan-system
+          predicates:
+            - Path=/system/**
+        - id: router-generate
+          uri: lb://mushan-generate
+          predicates:
+            - Path=/generate/**
