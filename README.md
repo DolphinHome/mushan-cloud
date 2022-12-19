@@ -10,6 +10,7 @@
 
 ~~~
 com.mushan     
+├── mushan-ui         //前端
 ├── mushan-gateway         // 网关模块 [8080]
 ├── mushan-common          // 通用模块
 │       └── mushan-common-captcha                    // 验证码配置
