@@ -4,7 +4,7 @@
 通用的通用管理系统！前端使用vue3  后端使用springcloud
 ## b站地址
 
-
+https://www.bilibili.com/video/BV1GR4y167iX/?spm_id_from=333.999.0.0&vd_source=c6700092758092817e6a6463360a3597
 ## 系统模块
 
 ~~~
